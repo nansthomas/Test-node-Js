@@ -1,52 +1,57 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html>
 <head>
-
-	<meta charset="utf-8">
-
-	<title>Star Wars</title>
-
-	<link type="text/css" rel="stylesheet" href="assets/css/styles.css" />
-	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-
-	<link rel="stylesheet" href="assets/revealjs/css/reveal.css">
-	<link rel="stylesheet" href="assets/revealjs/css/theme/black.css" id="theme">
-
+  <meta charset="UTF-8">
+  <title>Star Wars Game</title>
+  <script src="assets/js/modernizr-custom.js"></script>
+  <!-- <link rel="stylesheet" href="style/style.css"> -->
 </head>
 
 <body>
+  <div class="wrapper">
+    <img src="images/star-wars-logo.svg" alt="Star Wars logo" class="logo">
 
-	<form class="login">
-		<span>Quelle est votre nom secret ?</span>
-		<input type="text" placeholder="C'est nansouille"/>
-		<input type="submit" value="➡" />
-	</form>
+    <div class="star-wars-logo"></div>
 
-	
-	<div class="reveal blurred">
-		<div class="slides">
-			<section data-background="assets/img/1.jpg">
-			</section>
-			<section>
-				<section data-background="assets/img/2.jpg">Ca marche salope !</section>
-			</section>
-		</div>
-	</div>
+    <section class="form">
+      <h2>Welcome,</h2>
+      <div class="input-container">
+        <p>Enter your first name</p>
+            <input type="text" placeholder="Your First Name" class="first_name" />
+            <p>Enter your last name</p>
+            <input type="text" placeholder="Your Last Name" class="last_name" />
+            <p>Enter your city of birth</p>
+            <input type="text" placeholder="Your Birth City" class="birth_city" />
+            <button id="submit" class="submit">Play</button>
+        </div>
+    </section>
 
+    <div class="result-container">
+      <img class="photo" src="images/avatar/blank.png" alt="Avatar">
+      <p class="result"></p>
+    </div>
 
-	<!-- Including the JS libraries that we use -->
-	<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+  </div>
 
-	<!-- Reveal.js is for presentations -->
-	<script src="assets/revealjs/lib/js/head.min.js"></script>
-	<script src="assets/revealjs/js/reveal.js"></script>
+  <!-- Including the JS libraries that we use -->
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 
-	<!-- Socket.io library -->
-	<script src="/socket.io/socket.io.js"></script>
+  <!-- Socket.io library -->
+  <script src="/socket.io/socket.io.js"></script>
 
-	<!-- Main JavaScript file -->
-	<script src="assets/js/script.js"></script>
+  <!-- Main JavaScript file -->
+  <script src="assets/js/test.js"></script>
+
+  <script>
+
+    var socket = io.connect('http://localhost:5000');
+
+    $('#submit').click(function() {
+      socket.emit('auth', starWarsName);
+    });
+  </script>
 
 </body>
+
 </html>

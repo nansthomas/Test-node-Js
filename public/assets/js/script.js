@@ -73,7 +73,7 @@ $(function() {
 
 
 			secretTextBox.addClass('denied animation');
-			
+
 			animationTimeout = setTimeout(function(){
 				secretTextBox.removeClass('animation');
 			}, 1000);
